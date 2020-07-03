@@ -83,3 +83,16 @@ Tweets et Écologie
 
 4. **data_example** : dossier contenant des dataframes générés à partir de la méthode décrite ci-dessus et pouvant être utilisés pour créer des visualisations. Le mot concerné constitue le nom du dataframe. 
 
+
+*4_utilisateurs*
+
+1. **socioDem.py** : permet d'obsever la croissance du nombre moyen de tweets par utilisateur dans l'ensemble des tweets et dans les tweets liés à l'écologie, ainsi que l'évolution du pourcentage d'utilisateurs dans ces deux ensembles. Fournit également une fonction pour comparer les moyennes de certaines variables sociodémographiques de l'ensemble des utilisateurs et des utilisateurs ayant twitté sur l'écologie d'année en année, et une autre pour observer les moyennes de ces variables pour les utilisateurs dont les tweets liés à l'écologie ont connus une baisse ou une hausse d'une année sur l'autre. 
+
+	Nécessite 4 dataframes :
+
+	- *matches.csv*, déjà décrit ci-dessus (dans *2_observation_frequences*)
+	- *df_users* : un fichier *.csv* contenant pour chaque utilisateur (en index) les informations sociodémographiques qui lui sont associées ainsi que son nombre de tweets total (en colonne)
+	- *df_percent* : fichier *.csv* contenant pour chaque utilisateur (en index) son pourcentage de tweets liés à l'écologie par année (en colonne)
+	- *df_nbTweetsTotByYearByUser* : fichier *.csv* contenant pour chaque utilisateur (en index) son nombre total de tweets dans le corpus par année (en colonne)
+
+
