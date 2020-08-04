@@ -85,6 +85,7 @@ Tweets et Écologie
 
 
 *4_utilisateurs*
+-
 
 1. **socioDem.py** : permet d'obsever la croissance du nombre moyen de tweets par utilisateur dans l'ensemble des tweets et dans les tweets liés à l'écologie, ainsi que l'évolution du pourcentage d'utilisateurs dans ces deux ensembles. Fournit également une fonction pour comparer les moyennes de certaines variables sociodémographiques de l'ensemble des utilisateurs et des utilisateurs ayant twitté sur l'écologie d'année en année, et une autre pour observer les moyennes de ces variables pour les utilisateurs dont les tweets liés à l'écologie ont connus une baisse ou une hausse d'une année sur l'autre. 
 
@@ -95,4 +96,12 @@ Tweets et Écologie
 	- *df_percent* : fichier *.csv* contenant pour chaque utilisateur (en index) son pourcentage de tweets liés à l'écologie par année (en colonne)
 	- *df_nbTweetsTotByYearByUser* : fichier *.csv* contenant pour chaque utilisateur (en index) son nombre total de tweets dans le corpus par année (en colonne)
 
+2. **localisation.ipynb** : notebook jupyter permettant de visualiser sur une carte le pourcentage d'utilisateurs twittant à propos d'écologie dans chaque département à une année donnée et le pourcentage de voix obtenu par EELV, ainsi que de calculer le coefficient de Pearson entre ces deux variables et de visualiser l'autocorrélation spatiale globale et locale pour chacune d'entre elles et ainsi identifier les clusters.
+Nécessite en entrée le fichier geojson *infosParDep.geojson*. 
 
+3. **infosParDep.geojson** : fichier geojson contenant pour chaque département : 
+	- le code du département 
+	- le nom du département
+	- le résultat en pourcentage de voix exprimées obtenu par EELV aux élections européennes de 2014 et 2019 (récupérés respectivement sur *https://www.data.gouv.fr/fr/datasets/elections-europeennes-2014-resulta-2/* et *https://www.data.gouv.fr/fr/datasets/resultats-des-elections-europeennes-2019/*)
+	- le pourcentage d'utilisateurs twittant à propos d'écologie pour chaque année de 2014 à 2015 (un utilisateur est considéré comme tel s'il a plus d'un tweet en lien avec l'écologie et si plus de 1% de ses tweets sont relatifs à l'écologie)
+	- les coordonnées géographiques délimitant les contours du département (récupérées sur *https://github.com/gregoiredavid/france-geojson*) 
