@@ -2,7 +2,7 @@ Tweets et Écologie
 =
 
 
-*1_construction_lexique*
+*construction_lexique*
 -
 
 1. **recuperationTweets.py** : récupère les 3200 derniers tweets d'une liste de compte Twitter (nécessite d'avoir un compte Twitter Developer)
@@ -24,7 +24,7 @@ Tweets et Écologie
 3. **calculSpec.py** : construit un dataframe *specif.csv* à partir de *freqByUser.csv* contenant au lieu du nombre d'occurrences le score de spécifité de chacun des token pour chaque compte Twitter. 
 
 
-*2_observation_frequences*
+*observation_frequences*
 -
 
 1. **extractionFreq.py** : à partir de *listeMots.txt*, parcourt l'ensemble du corpus de tweets au format json et récupère chaque occurrence de chaque mot du lexique (mots et tweets mis en minuscules et sans signes diacritiques) pour la stocker dans un dataframe *matches.csv* (cf. ci-dessous). En parallèle, pour alimenter le dataframe, récupère le nombre de tweets total de chaque jour.
@@ -52,7 +52,7 @@ Tweets et Écologie
 5. **termes.py** : à partir de *matches_anonymise.csv* permet d'observer le taux de croissance des mots du lexique d'année en année, mais également de connaître leur répartition pour une période donnée et de connaître la répartition du pourcentage de tweets lors des pics hauts et bas par jour de la semaine. 
 
 
-*3_embedding*
+*embedding*
 -
 
 1. **preprocessing.py** : effectue un prétraitement de tweets fournis en entrée (le fichier doit contenir un tweet par ligne). Le prétraitement est le suivant :
@@ -84,7 +84,7 @@ Tweets et Écologie
 4. **data_example** : dossier contenant des dataframes générés à partir de la méthode décrite ci-dessus et pouvant être utilisés pour créer des visualisations. Le mot concerné constitue le nom du dataframe. 
 
 
-*4_utilisateurs*
+*utilisateurs*
 -
 
 1. **socioDem.py** : permet d'obsever la croissance du nombre moyen de tweets par utilisateur dans l'ensemble des tweets et dans les tweets liés à l'écologie, ainsi que l'évolution du pourcentage d'utilisateurs dans ces deux ensembles. Fournit également une fonction pour comparer les moyennes de certaines variables sociodémographiques de l'ensemble des utilisateurs et des utilisateurs ayant twitté sur l'écologie d'année en année, et une autre pour observer les moyennes de ces variables pour les utilisateurs dont les tweets liés à l'écologie ont connus une baisse ou une hausse d'une année sur l'autre. 
