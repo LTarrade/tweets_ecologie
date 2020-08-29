@@ -5,10 +5,10 @@ import pandas as pd
 import sys
 
 
-df_matches = pd.read_csv("./chemin/ver/matches_anomyse.csv", sep=";", index_col=0)
-df_users = pd.read_csv("./chemin/vers/df2.csv", sep=";", index_col=0)
-df_percent = pd.read_csv("./chemin/vers/df3.csv", sep=";", index_col=0)
-df_nbTweetsTotByYearByUser = pd.read_csv("./chemin/vers/df4.csv", sep=";", index_col=0)
+df_matches = pd.read_csv("../observation_frequences/matches_anonymise.csv", sep=";", index_col=0)
+df_users = pd.read_csv("./df_users_anonymise.csv", sep=";", index_col=0)
+df_percent = pd.read_csv("./df_percent_anonymise.csv", sep=";", index_col=0)
+df_nbTweetsTotByYearByUser = pd.read_csv("./df_nbTweetsTotByYearByUser_anonymise.csv", sep=";", index_col=0)
 
 
 years = ["2013", "2014", "2015", "2016", "2017", "2018"]
@@ -106,16 +106,16 @@ def compareMeans(var) :
     for y in usersByYear : 
         # Récupération de la moyenne de la variable observé pour les utilisateurs twittant sur l'écologie
         sousDf = df_users[df_users.index.isin(usersByYear[y])]
-        moy = sousDf.population_density.mean()
+        moy = sousDf[var].mean()
         print("\n"+str(y))
-        print("moyenne des utilisateurs twittant à propos d'écologie : "+str(round(moy,2)))
+        print("moyenne des utilisateurs twittant à propos d'écologie - "+var+": "+str(round(moy,2)))
         moyEcol.append(moy)
 
         # Récupération de la moyenne de la variable observé pour l'ensemble des utilisateurs
         allUsersInYear = df_nbTweetsTotByYearByUser[~df_nbTweetsTotByYearByUser[y].isna()].index.tolist()
         sousDf_global = df_users[df_users.index.isin(allUsersInYear)]
-        moy_global = sousDf_global.population_density.mean()
-        print("moyenne globale : "+str(round(moy_global,2)))
+        moy_global = sousDf_global[var].mean()
+        print("moyenne globale - "+var+": "+str(round(moy_global,2)))
         moyGlob.append(moy_global)
 
         ecartMoy = moy-moy_global
@@ -130,8 +130,8 @@ def compareMeans(var) :
 
     # Visualisation graphique de la moyenne chaque année pour les deux populations
     plt.figure(figsize=[14,6])
-    plt.plot(years, moyGlob, label="moyenne globale")
-    plt.plot(years, moyEcol, label="moyenne des utilisateurs twittant à propos d'écologie")
+    plt.plot(years, moyGlob, label="moyenne globale - "+var)
+    plt.plot(years, moyEcol, label="moyenne des utilisateurs twittant à propos d'écologie - "+var)
     plt.legend()
     plt.grid(axis="y")
     plt.show()
@@ -157,7 +157,7 @@ def meanCroissAndDec(y1,y2) :
             croi.append(user)
         if user in usersWithTweets_dict and row[y2]<row[y1] :
             decr.append(user)
-    print("%s => %s\n\n"%(y1,y2))
+    print("\n%s => %s\n"%(y1,y2))
 
     print("moyenne revenus croissance : "+str(round(df_users[df_users.index.isin(croi)]["income"].mean(),2)))
     print("moyenne revenus décroissance : "+str(round(df_users[df_users.index.isin(decr)]["income"].mean(),2)))
